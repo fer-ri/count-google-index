@@ -116,12 +116,14 @@
                         href: response.data.google
                     }))
                 })
-                .fail(function (response) {
-                    if (undefined === response.error) {
+                .fail(function (jqxhr, textStatus, error) {
+                    var json = jqxhr.responseJSON
+
+                    if (undefined === json.error) {
                         return alert('Something wrong!')
                     }
 
-                    alert(response.error)
+                    alert(json.error)
                 })
                 .always(function () {
                     url.attr('disabled', false)
