@@ -49,7 +49,7 @@ if (! $url) {
     ], 403);
 }
 
-if (! filter_var_domain($url)) {
+if (! $url = filter_var_domain($url)) {
     return responseJson([
         'error' => 'URL is not valid',
     ], 403);
